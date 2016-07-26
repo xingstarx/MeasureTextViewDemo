@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +35,7 @@ public class BottomFragment extends DialogFragment {
 
     public void initCashList() {
         for (int i = 0; i < 8; i++) {
-            mCashList.add(new ShouCash(R.drawable.ic_money_5, 200 * (i + 1), "HK$" + (i * 500.01f + 272.00f)));
+            mCashList.add(new ShouCash(R.drawable.ic_money_5, 200 * (i + 1), "HK$" + ((i -1 ) * 300.56f + i * 500.01f + 272.00f)));
         }
     }
 
@@ -92,11 +91,12 @@ public class BottomFragment extends DialogFragment {
                         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
                         v.measure(widthMeasureSpec, heightMeasureSpec);
                         CashAdapter.ListHolder holder = (CashAdapter.ListHolder) v.getTag();
-                        Log.e(TAG, "holder.shouCashMoney.getMeasuredWidth() == " + holder.shouCashMoney.getMeasuredWidth());
+                        Log.e(TAG, "holder.shouCashMoney.getMeasuredWidth()==" + holder.shouCashMoney.getMeasuredWidth());
                         if (holder.shouCashMoney.getMeasuredWidth() > mWidth) {
                             mWidth = holder.shouCashMoney.getMeasuredWidth();
                         }
-                        Log.e(TAG, "mWidth == " + mWidth);
+                        Log.e(TAG, "mWidth==" + mWidth);
+
                     }
                     mCashList.clear();
                     initCashList();
@@ -157,7 +157,7 @@ public class BottomFragment extends DialogFragment {
             holder.shouCashCount.setText("" + shoucash.count);
             if (mWidth > 0 && mForceRefresh) {
                 holder.shouCashMoney.setMinWidth(mWidth);
-                holder.shouCashMoney.setBackgroundColor(ContextCompat.getColor(getActivity(), android.R.color.holo_blue_bright));
+//                holder.shouCashMoney.setBackgroundColor(ContextCompat.getColor(getActivity(), android.R.color.holo_blue_bright));
             }
             holder.shouCashImageView.setImageResource(shoucash.resId);
             return convertView;

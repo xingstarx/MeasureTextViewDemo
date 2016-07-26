@@ -33,7 +33,6 @@
         android:background="@drawable/btn_cash"
         android:gravity="center"
         android:minWidth="72dp"
-        android:maxWidth="100dp"
         android:padding="8dp"
         android:singleLine="true"
         android:textColor="@color/shou_white" />
