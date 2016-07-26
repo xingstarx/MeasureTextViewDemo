@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/shou_white">
+
+    <ImageView
+        android:id="@+id/shoucash_item_img"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_money_5" />
+
+    <TextView
+        android:id="@+id/shoucash_item_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/shoucash_item_img"
+        android:singleLine="true"
+        android:textColor="@color/body_text" />
+
+    <TextView
+        android:id="@+id/shoucash_item_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_cash"
+        android:gravity="center"
+        android:minWidth="72dp"
+        android:maxWidth="100dp"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="@color/shou_white" />
+
+</RelativeLayout>
