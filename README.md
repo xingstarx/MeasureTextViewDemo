@@ -1,0 +1,4 @@
+# MeasureTextViewDemo
+计算listview下的itemView里面的textview的宽度，比较之后取出最大值，使每一个itemView的textview的宽度都设置为最大值
+
+详情请运行demo
