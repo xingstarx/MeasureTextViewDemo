@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/shou_white">
+    android:background="@color/white">
 
     <ImageView
-        android:id="@+id/shoucash_item_img"
+        android:id="@+id/item_img"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_alignParentStart="true"
@@ -15,16 +15,16 @@
         android:src="@drawable/ic_money_5" />
 
     <TextView
-        android:id="@+id/shoucash_item_count"
+        android:id="@+id/item_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/shoucash_item_img"
+        android:layout_toEndOf="@id/item_img"
         android:singleLine="true"
         android:textColor="@color/body_text" />
 
     <TextView
-        android:id="@+id/shoucash_item_money"
+        android:id="@+id/item_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -35,6 +35,6 @@
         android:minWidth="72dp"
         android:padding="8dp"
         android:singleLine="true"
-        android:textColor="@color/shou_white" />
+        android:textColor="@color/white" />
 
 </RelativeLayout>

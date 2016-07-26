@@ -22,7 +22,7 @@ public class BottomFragment extends DialogFragment {
     public static final String TAG = "BottomFragment";
     public int mWidth;
     private ListView mListView;
-    private List<ShouCash> mCashList = new ArrayList<>();
+    private List<Cash> mCashList = new ArrayList<>();
     private CashAdapter mCashAdapter;
     private boolean mForceRefresh;
 
@@ -35,7 +35,7 @@ public class BottomFragment extends DialogFragment {
 
     public void initCashList() {
         for (int i = 0; i < 8; i++) {
-            mCashList.add(new ShouCash(R.drawable.ic_money_5, 200 * (i + 1), "HK$" + ((i -1 ) * 300.56f + i * 500.01f + 272.00f)));
+            mCashList.add(new Cash(R.drawable.ic_money_5, 200 * (i + 1), "HK$" + ((i - 1) * 300.56f + i * 500.01f + 272.00f)));
         }
     }
 
@@ -47,7 +47,7 @@ public class BottomFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dialog_shoucash, container, false);
+        View view = inflater.inflate(R.layout.fragment_dialog_cash, container, false);
         mListView = (ListView) view.findViewById(R.id.list_view);
         initCashList();
         mCashAdapter = new CashAdapter(getActivity());
@@ -91,9 +91,9 @@ public class BottomFragment extends DialogFragment {
                         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
                         v.measure(widthMeasureSpec, heightMeasureSpec);
                         CashAdapter.ListHolder holder = (CashAdapter.ListHolder) v.getTag();
-                        Log.e(TAG, "holder.shouCashMoney.getMeasuredWidth()==" + holder.shouCashMoney.getMeasuredWidth());
-                        if (holder.shouCashMoney.getMeasuredWidth() > mWidth) {
-                            mWidth = holder.shouCashMoney.getMeasuredWidth();
+                        Log.e(TAG, "getMeasuredWidth()==" + holder.cashMoney.getMeasuredWidth());
+                        if (holder.cashMoney.getMeasuredWidth() > mWidth) {
+                            mWidth = holder.cashMoney.getMeasuredWidth();
                         }
                         Log.e(TAG, "mWidth==" + mWidth);
 
@@ -107,12 +107,12 @@ public class BottomFragment extends DialogFragment {
         }, 0);
     }
 
-    private class ShouCash {
+    private class Cash {
         public int resId;
         public int count;
         public String price;
 
-        public ShouCash(int resId, int count, String price) {
+        public Cash(int resId, int count, String price) {
             this.resId = resId;
             this.count = count;
             this.price = price;
@@ -146,32 +146,31 @@ public class BottomFragment extends DialogFragment {
         public View getView(int position, @Nullable View convertView, ViewGroup parent) {
             ListHolder holder;
             if (convertView == null) {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.shoucash_dialog_list_item, parent, false);
+                convertView = LayoutInflater.from(mContext).inflate(R.layout.cash_dialog_list_item, parent, false);
                 holder = new ListHolder(convertView);
                 convertView.setTag(holder);
             } else {
                 holder = (ListHolder) convertView.getTag();
             }
-            ShouCash shoucash = (ShouCash) getItem(position);
-            holder.shouCashMoney.setText(shoucash.price);
-            holder.shouCashCount.setText("" + shoucash.count);
+            Cash cash = (Cash) getItem(position);
+            holder.cashMoney.setText(cash.price);
+            holder.count.setText("" + cash.count);
             if (mWidth > 0 && mForceRefresh) {
-                holder.shouCashMoney.setMinWidth(mWidth);
-//                holder.shouCashMoney.setBackgroundColor(ContextCompat.getColor(getActivity(), android.R.color.holo_blue_bright));
+                holder.cashMoney.setMinWidth(mWidth);
             }
-            holder.shouCashImageView.setImageResource(shoucash.resId);
+            holder.cashImageView.setImageResource(cash.resId);
             return convertView;
         }
 
         public class ListHolder {
-            TextView shouCashCount;
-            ImageView shouCashImageView;
-            TextView shouCashMoney;
+            TextView count;
+            ImageView cashImageView;
+            TextView cashMoney;
 
             public ListHolder(View itemView) {
-                shouCashCount = (TextView) itemView.findViewById(R.id.shoucash_item_count);
-                shouCashImageView = (ImageView) itemView.findViewById(R.id.shoucash_item_img);
-                shouCashMoney = (TextView) itemView.findViewById(R.id.shoucash_item_money);
+                count = (TextView) itemView.findViewById(R.id.item_count);
+                cashImageView = (ImageView) itemView.findViewById(R.id.item_img);
+                cashMoney = (TextView) itemView.findViewById(R.id.item_money);
             }
         }
     }
